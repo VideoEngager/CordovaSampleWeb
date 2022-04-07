@@ -29,7 +29,7 @@ Other requirements can be found here: https://cordova.apache.org/docs/en/10.x/gu
 Setup ios and android emulators from xcode and android studio.
 
 ## configuration
-./config.xml file has access control. set it as your restrictions.
+./config.xml file has access control. set it according to your restriction policy.
 ```
 <allow-intent href="*" />
 <access origin="*" />
