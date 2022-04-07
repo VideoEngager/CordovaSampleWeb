@@ -35,7 +35,7 @@ Setup ios and android emulators from xcode and android studio.
 <access origin="*" />
 <allow-navigation href="*" />
 ```
-`./www/js/index.js` has cordova spesific code. in this example you will find permission request commands for android.
+`./www/js/index.js` has cordova spesific code. In this example you will find permission request commands for android.
 
 ### android
 `/platforms/android/app/src/main/AndroidManifest.xml` has android permissions which is required.
@@ -63,6 +63,7 @@ Setup ios and android emulators from xcode and android studio.
 ## build and test
 
 `cordova build` will build the app
-`cordova run android ` will run app in android emulator
-`cordova run ios` will run app in ios emulator
 
+`cordova run android ` will run app in android emulator
+
+`cordova run ios` will run app in ios emulator
