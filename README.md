@@ -5,23 +5,46 @@ Demonstrates usage of SmartVideo web widget in Cordova App
 
 We use **cordova version 10**
 
-You should use **jdk version 15** or lesser to be able to compile cordova.
+You should use **jdk version 1.8 or 8** to be able to compile cordova 10.
 
-If you are a mac m1 user, you can use azul jdk 15 binaries from here: https://www.azul.com/downloads/?package=jdk
+If you are a mac m1 user, you can use azul jdk 8 binaries from here: https://www.azul.com/downloads/?version=java-8-lts&os=macos&package=jdk#download-openjdk
+Then set env variables
+```
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home
+export JAVA_SDK=/Library/Java/JavaVirtualMachines/zulu-8.jdk/
+```
 
-You should install **android sdk**. the easiest way to do this is installing android studio.
+You should install **android sdk**. The easiest way to do this is installing android studio.
 
-open your android studio, sdk manager and install **Android api level 30**
+Open your android studio, sdk manager and install **Android api level 30**
 
-nstall **sdk platform tools** from sdk tools section in sdk manager
+Install **sdk platform tools** from sdk tools section in sdk manager.
+
+Sen android environment variables
+```
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+export ANDROID_AVD_HOME=~/.android/avd
+PATH=$PATH:$HOME/Library/Android/Sdk/emulator
+PATH=$PATH:$HOME/Library/Android/Sdk/tools
+PATH=$PATH:$HOME/Library/Android/Sdk/tools/bin
+PATH=$PATH:$HOME/Library/Android/Sdk/platform-tools
+```
 
 install gradle
+
 ` npm install -g Gradle`
 
+install ios deploy
+
+`npm install -g ios-deploy`
+
 install cordova by
+
 `npm install cordova@10.0.0  -g`
 
 run this command to see leftover requirements
+
 `cordova requirements`
 
 Other requirements can be found here: https://cordova.apache.org/docs/en/10.x/guide/cli/
