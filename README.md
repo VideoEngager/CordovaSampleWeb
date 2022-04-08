@@ -49,6 +49,10 @@ run this command to see leftover requirements
 
 Other requirements can be found here: https://cordova.apache.org/docs/en/10.x/guide/cli/
 
+#### Note
+A cordova plugin **cordova-diagnostic-plugin** is used in this example. It will be downloaded automatically when you run build command for the first time.
+
+### Emulators
 Setup xcode emulator for ios.
 
 Setup android emulator from android studio.
@@ -59,16 +63,21 @@ npm install required
 
 `npm install`
 
-## configuration
+## Configuration
+### Cordova Spesific Code
+`./www/js/index.js` has cordova spesific code. 
+
+In this example you will find permission request commands for android using cordova-diagonistic-plugin.
+
+### Global Policy Configuration
 ./config.xml file has access control. set it according to your restriction policy.
 ```
 <allow-intent href="*" />
 <access origin="*" />
 <allow-navigation href="*" />
 ```
-`./www/js/index.js` has cordova spesific code. In this example you will find permission request commands for android.
 
-### android
+### Android Configuration
 `/platforms/android/app/src/main/AndroidManifest.xml` has android permissions which is required.
 
 `/platforms/android/app/src/main/res/xml/config.xml` has android spesific restrictions.
@@ -78,7 +87,7 @@ npm install required
 <allow-navigation href="*" />
 ```
 
-### ios
+### iOS Configuration
 
 `/platforms/ios/SingleButtonPage/SingleButtonPage-Info.plist` has ios spesific permission settings.
 
@@ -95,7 +104,7 @@ npm install required
 
 ### Building
 
-First ever build command will return an error about plugins and it will download and install plugin.
+First ever build command will return an error about plugins. It will download and install plugin. After the first failed build command, you can safely run build command as regular.
 
 Build command:
 
@@ -103,10 +112,10 @@ Build command:
 
 ### Testing
 
-Run android emulator from android studio AVD
+Run android emulator from android studio AVD manager to test your code in android emulator.
 
 `cordova run android ` will run app in android emulator
 
-Run iphone emulator from xcode developer tools.
+Run iPhone emulator from xcode developer tools to test your code in iPhone emulator.
 
 `cordova run ios` will run app in ios emulator
