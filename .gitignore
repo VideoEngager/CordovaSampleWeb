@@ -33,3 +33,4 @@ platforms/ios/cordova/console.log
 
 #rest
 .idea/
+.vscode/

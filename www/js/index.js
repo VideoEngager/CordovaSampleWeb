@@ -1,93 +1,34 @@
+/* global cordova */
 document.addEventListener('deviceready', onDeviceReady, false);
 
-async function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
+async function onDeviceReady () {
+  // Cordova is now initialized. Have fun!
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    var permissions = cordova.plugins.permissions;
-    permissions.checkPermission(permissions.CAMERA, function( status ){
-        if ( status.checkPermission ) {
-          console.log("Yes :D ");
-        }
-        else {
-            permissions.requestPermission(permissions.CAMERA, success, error);
-            function error() {
-              console.warn('Camera permission is not turned on');
-            }
-            function success( status ) {
-              if( !status.checkPermission ) error();
-            }
-        }
-      });
+  console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
 
-      permissions.checkPermission(permissions.WRITE_EXTERNAL_STORAGE, function( status ){
-        if ( status.checkPermission ) {
-          console.log("Yes :D ");
-        }
-        else {
-            permissions.requestPermission(permissions.WRITE_EXTERNAL_STORAGE, success, error);
-            function error() {
-              console.warn('WRITE_EXTERNAL_STORAGE permission is not turned on');
-            }
-            function success( status ) {
-              if( !status.checkPermission ) error();
-            }
-        }
-      });
+  const requiredPermissionsList = [
+    cordova.plugins.diagnostic.permission.CAMERA,
+    cordova.plugins.diagnostic.permission.RECORD_AUDIO
+  ];
 
-      permissions.checkPermission(permissions.RECORD_AUDIO, function( status ){
-        if ( status.checkPermission ) {
-          console.log("Yes :D ");
-        }
-        else {
-            permissions.requestPermission(permissions.RECORD_AUDIO, success, error);
-            function error() {
-              console.warn('RECORD_AUDIO permission is not turned on');
-            }
-            function success( status ) {
-              if( !status.checkPermission ) error();
-            }
-        }
-      });
-      await permissions.requestPermission(permissions.CAPTURE_AUDIO_OUTPUT);
-      await permissions.requestPermission(permissions.READ_MEDIA_AUDIO);
-      await permissions.requestPermission(permissions.READ_MEDIA_VIDEO);
-      await permissions.requestPermission(permissions.ACCESS_LOCATION_EXTRA_COMMANDS);
-      await permissions.requestPermission(permissions.ACCESS_FINE_LOCATION);
-      await permissions.requestPermission(permissions.ACCESS_COARSE_LOCATION);
-      await permissions.requestPermission(permissions.CALL_PHONE);
-      await permissions.requestPermission(permissions.MODIFY_PHONE_STATE);
-
-
-        permissions.checkPermission(permissions.MODIFY_AUDIO_SETTINGS, function( status ){
-        if ( status.checkPermission ) {
-          console.log("Yes :D ");
-        }
-        else {
-            permissions.requestPermission(permissions.MODIFY_AUDIO_SETTINGS, success, error);
-            function error() {
-              console.warn('MODIFY_AUDIO_SETTINGS permission is not turned on');
-            }
-            function success( status ) {
-              if( !status.checkPermission ) error();
-            }
-        }
-      });
-
-      // First check whether we already have permission to access the microphone.
-window.audioinput.checkMicrophonePermission(function(hasPermission) {
-	if (hasPermission) {
-		console.log("We already have permission to record.");
-	} 
-	else {	        
-		// Ask the user for permission to access the microphone
-		window.audioinput.getMicrophonePermission(function(hasPermission, message) {
-			if (hasPermission) {
-				console.log("User granted us permission to record.");
-			} else {
-				console.warn("User denied permission to record.");
-			}
-		});
-	}
-});
+  cordova.plugins.diagnostic.requestRuntimePermissions(function (statuses) {
+    for (const permission in statuses) {
+      switch (statuses[permission]) {
+        case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+          console.log('Permission granted to use ' + permission);
+          break;
+        case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
+          console.log('Permission to use ' + permission + ' has not been requested yet');
+          break;
+        case cordova.plugins.diagnostic.permissionStatus.DENIED_ONCE:
+          console.log('Permission denied to use ' + permission + ' - ask again?');
+          break;
+        case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
+          console.log('Permission permanently denied to use ' + permission + ' - guess we wont be using it then!');
+          break;
+      }
+    }
+  }, function (error) {
+    console.error('The following error occurred: ' + error);
+  }, requiredPermissionsList);
 }

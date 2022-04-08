@@ -16,8 +16,7 @@
     "cordova-android": "^10.1.1",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^6.2.0",
-    "cordova-plugin-android-permissions": "^1.1.3",
-    "cordova-plugin-audioinput": "^1.0.2"
+    "cordova.plugins.diagnostic": "^6.1.1"
   },
   "cordova": {
     "platforms": [
@@ -26,8 +25,13 @@
       "ios"
     ],
     "plugins": {
-      "cordova-plugin-android-permissions": {},
-      "cordova-plugin-audioinput": {}
+      "cordova.plugins.diagnostic": {
+        "ANDROIDX_VERSION": "1.0.0",
+        "ANDROIDX_APPCOMPAT_VERSION": "1.3.1"
+      }
     }
+  },
+  "dependencies": {
+    "semistandard": "^16.0.1"
   }
 }

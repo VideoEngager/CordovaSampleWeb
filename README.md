@@ -43,6 +43,10 @@ install cordova by
 
 `npm install cordova@10.0.0  -g`
 
+npm install required
+
+`npm install`
+
 run this command to see leftover requirements
 
 `cordova requirements`
