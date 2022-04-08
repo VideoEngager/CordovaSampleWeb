@@ -1,7 +1,7 @@
 # Cordova Sample Web
 Demonstrates usage of SmartVideo web widget in Cordova App
 
-## Prerequests and installation
+## Prerequesties
 
 We use **cordova version 10**
 
@@ -43,17 +43,21 @@ install cordova by
 
 `npm install cordova@10.0.0  -g`
 
-npm install required
-
-`npm install`
-
 run this command to see leftover requirements
 
 `cordova requirements`
 
 Other requirements can be found here: https://cordova.apache.org/docs/en/10.x/guide/cli/
 
-Setup ios and android emulators from xcode and android studio.
+Setup xcode emulator for ios.
+
+Setup android emulator from android studio.
+
+## Installation
+
+npm install required
+
+`npm install`
 
 ## configuration
 ./config.xml file has access control. set it according to your restriction policy.
@@ -87,10 +91,22 @@ Setup ios and android emulators from xcode and android studio.
 <preference name="AllowInlineMediaPlayback" value="true" />
 ```
 
-## build and test
+## Build and Test
 
-`cordova build` will build the app
+### Building
+
+First ever build command will return an error about plugins and it will download and install plugin.
+
+Build command:
+
+`cordova build`
+
+### Testing
+
+Run android emulator from android studio AVD
 
 `cordova run android ` will run app in android emulator
+
+Run iphone emulator from xcode developer tools.
 
 `cordova run ios` will run app in ios emulator
