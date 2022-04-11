@@ -100,6 +100,16 @@ In this example you will find permission request commands for android using cord
 <preference name="AllowInlineMediaPlayback" value="true" />
 ```
 
+### Video Engager Configuration
+There are 3 example hardcoded server configurations in `www/index.html`.
+
+Code is pointing to dev server as default.
+```
+let env = 'dev';
+```
+
+The options for hardcoded configurations are: `dev`, `staging` and `prod`.
+
 ## Build and Test
 
 ### Building
