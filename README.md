@@ -101,14 +101,37 @@ In this example you will find permission request commands for android using cord
 ```
 
 ### Video Engager Configuration
-There are 3 example hardcoded server configurations in `www/index.html`.
+#### Client Side Configuration
+Configuration parameters should be set in `www/index.html`.
 
-Code is pointing to dev server as default.
+There are several configuration parameters such as :
+- tennantId
+- videoengagerUrl
+- environment
+- deploymentId
+- organizationId
+- queue
+
 ```
-let env = 'dev';
+// configuration example from the code:
+window._genesys.widgets.videoengager.tenantId = parameters[env].tennantId;
+window._genesys.widgets.videoengager.veUrl = parameters[env].videoengagerUrl;
+window._genesys.widgets.webchat.transport.dataURL = parameters[env].environment;
+window._genesys.widgets.webchat.transport.deploymentKey = parameters[env].deploymentId;
+window._genesys.widgets.webchat.transport.orgGuid = parameters[env].organizationId;
+window._genesys.widgets.webchat.transport.interactionData.routing.targetAddress = parameters[env].queue;
 ```
 
-The options for hardcoded configurations are: `dev`, `staging` and `prod`.
+You can read below documentation to learn how to get customer side parameters:
+https://github.com/VideoEngager/SmartVideoWebSDK/blob/master/click2videoguide.pdf
+
+#### Agent Side Configuration
+Agent side settins parameters are explained in this document:
+https://drive.google.com/file/d/1ZKyLnzp14xczEoKLaoca29uYthLly0M9/view?usp=sharing
+
+- Go to Genesys -> Apps -> SmartVideo_Settings
+- Enter agent side parameters in Genesys section for each parameter
+
 
 ## Build and Test
 
